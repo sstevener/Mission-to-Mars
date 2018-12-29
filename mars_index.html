@@ -12,11 +12,11 @@
         crossorigin="anonymous">
     <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
 
 </head>
 
@@ -33,18 +33,18 @@
         <div class="container">
             <h3>Latest Mars News</h3>
             <h6 style="color: #c1440e">{{ mars_info.news_title | safe}}</h6>
-            <p> {{ mars_info.news_paragraph | safe }} </p>
+            <p> {{ mars_info.news_p | safe }} </p>
         </div>
         <div class="container">
             <div class="row">
 
-                <!-- Featured Image-->
+                <!-- Mars Featured Image-->
                 <div class="col-lg-8 col-md-8 col-sm-12">
                     <h3>Featured Image of Mars</h3>
                     <img src="{{ mars_info.featured_image_url | safe}}" style="max-width:100%; max-height: auto;" alt="Mars Featured Image">
                 </div>
 
-                <!-- Weather Card -->
+                <!-- Mars Weather -->
                 <div class="col-lg-4 col-md-4 col-sm-12">
                     <div class="card" style="width: 18rem;">
                         <div class="card-body text-white bg-dark">
@@ -53,7 +53,7 @@
                         </div>
                     </div>
 
-                    <!-- Table -->
+                    <!-- Mars Facts -->
                     <br>
                     <h3>Mars Facts</h3>
                     <div style="max-width: 450px; max-height: 150px; font-size: 15px; margin-bottom: 65px;">
@@ -63,47 +63,72 @@
             </div>
         </div>
 
-        <!-- Hemispheres -->
-        <h3 style="padding-top: 50px; margin-top: 100px; text-align: center;">Mars Hemispheres</h3>
-        <div class="card-deck">
-            <hr>
-            <div class="col-md-12">
-                <div class="row">
-                    {% for item in mars_info.hemisphere_image_urls %}
-                    <div class="col-md-6">
-                        <div class="card text-white bg-dark" style="margin: 30px;">
-                            <img class="card-img-top" src="{{ hemisphere_image_urls.img_url | safe }}" />
-                            <div class="card-body">
-                                <p class="card-text">{{ hemisphere_image_urls.title_text | safe}}</p>
-                            </div>
-                        </div>
+        <!-- Mars Hemispheres -->
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h2>Mars Hemispheres</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">{{ mars_info.hemisphere_image_urls[0].title_text }}</h3>
                     </div>
-                    {% endfor %}
+                    <img class="card-img-top" src="{{ mars_data.hemispheres[0].img_url }}" alt="{{ mars_data.hemispheres[0].title }}">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">{{ mars_info.hemisphere_image_urls[1].title_text }}</h3>
+                    </div>
+                    <img class="card-img-top" src="{{ hemisphere_image_urls[1].img_url }}" alt="{{ mars_data.hemispheres[1].title }}">
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">{{ mars_info.hemisphere_image_urls[2].title_text }}</h3>
+                    </div>
+                    <img class="card-img-top" src="{{ mars_data.hemispheres[2].img_url }}" alt="{{ mars_data.hemispheres[2].title }}">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">{{ mars_info.hemisphere_image_urls[3].title_text }}</h3>
+                    </div>
+                    <img class="card-img-top" src="{{ mars_data.hemispheres[3].img_url }}" alt="{{ mars_data.hemispheres[3].title }}">
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
 
-        <!-- Footer -->
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <footer>
-                        <p>Post date:
-                            <script> document.write(new Date().toLocaleDateString()); </script>
-                        </p>
-                        <p>Sources:
-                            <ul class="list-unstyled">
-                                <li><a href="https://mars.nasa.gov/news">NASA Mars Exploration Program</a></li>
-                                <li><a href="https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars">JPL Mars
-                                        Images</a></li>
-                                <li><a href="https://twitter.com/marswxreport?lang=en">@MarsWxReport</a></li>
-                                <li><a href="https://space-facts.com/mars/">Space Facts</a></li>
-                            </ul>
-                        </p>
-                    </footer>
-                </div>
+    <!-- Footer -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <footer>
+                    <p>Post date:
+                        <script> document.write(new Date().toLocaleDateString()); </script>
+                    </p>
+                    <p>Sources:
+                        <ul class="list-unstyled">
+                            <li><a href="https://mars.nasa.gov/news">NASA Mars Exploration Program</a></li>
+                            <li><a href="https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars">JPL Mars Images</a></li>
+                            <li><a href="https://twitter.com/marswxreport?lang=en">@MarsWxReport</a></li>
+                            <li><a href="https://space-facts.com/mars/">Space Facts</a></li>
+                        </ul>
+                    </p>
+                </footer>
             </div>
         </div>
+    </div>
 </body>
 
 </html>
